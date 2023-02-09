@@ -1,0 +1,57 @@
+syntax = "proto3"; // 协议版本
+
+
+// 选项配置
+option java_multiple_files = true;
+option java_package = "com.demo.grpc.gnss";
+option java_outer_classname = "GnssProto";
+
+service GnssService {
+    // gnss数据解析
+    rpc Geo2cart (GeodeticCoordHDtoGrpc) returns (SpatialCoordDtoGrpc) {
+    }
+}
+
+message GeodeticCoordHDtoGrpc {
+    /**
+     * 大地经度
+     */
+    double lon = 1;
+    /**
+    * 大地纬度
+    */
+    double lat = 2;
+
+    /**
+     * 空间参考系类型
+     */
+    string reference_type = 3;
+    /**
+     * 大地高
+     */
+    double h = 4;
+}
+
+message SpatialCoordDtoGrpc {
+
+    /**
+     * 笛卡尔空间坐标X
+     */
+        double spatial_x = 1;
+/**
+ * 笛卡尔空间坐标Y
+ */
+
+    double spatial_y =2;
+/**
+ * 笛卡尔空间坐标Z
+ */
+    double spatial_z=3;
+/**
+ * 空间参考系类型
+ */
+    string reference_type = 4;
+}
+
+
+

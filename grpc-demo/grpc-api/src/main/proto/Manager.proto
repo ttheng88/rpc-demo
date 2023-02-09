@@ -1,0 +1,20 @@
+syntax = "proto3"; // 协议版本
+
+import "google/protobuf/empty.proto";
+// 选项配置
+option java_multiple_files = true;
+option java_package = "com.demo.grpc.manager";
+option java_outer_classname = "ManagerProto";
+
+service ManagerService {
+    // gnss数据解析
+    rpc UseDatum (UseDatumDtoGrpc) returns (google.protobuf.Empty) {
+    }
+}
+message UseDatumDtoGrpc {
+    int32 id =1;
+    string datum_dto =2;
+}
+
+
+
